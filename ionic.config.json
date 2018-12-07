@@ -1,0 +1,7 @@
+{
+  "name": "unitedway",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

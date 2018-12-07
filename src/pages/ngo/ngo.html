@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar color="header">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>My NGOs</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+    <div *ngFor="let ngo of ngoLists">      
+      <ion-card>
+        <img src="{{ngo.logo_img}}"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{ngo.title}}
+          </ion-card-title>
+          <p [innerHTML]="ngo.intro"></p>
+        </ion-card-content>
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="secondary" icon-start (click)="delete(ngo.sr_no)">
+              <ion-icon name='trash'></ion-icon>
+              Delete
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </div>
+    <ion-fab right bottom>
+      <button ion-fab color="primary" (click)="openNgoForm()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar color="header">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>My Team</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngIf="teamMembers">
+    <ion-item *ngFor="let key of keys" (click)="teamMemberDetail(key)">
+      <ion-avatar item-start>
+        <ion-row *ngIf="teamMembers[key]['imagefile']; else defaultImage">
+            <img src="{{teamMembers[key]['imagefile']}}">
+        </ion-row>
+        <ng-template #defaultImage><img src="assets/imgs/profile-pic.png"></ng-template>
+      </ion-avatar>
+      <h2>{{teamMembers[key]['name']}}</h2>
+    </ion-item>
+  </ion-list>
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="openForm()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

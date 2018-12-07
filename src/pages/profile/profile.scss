@@ -1,0 +1,26 @@
+page-profile {
+    ion-item {
+        padding-left: 0px !important;
+        border-radius: 10px !important;
+        font-size: 0.9em;
+        margin-bottom: 10px !important;
+        border-bottom: 0px !important;
+        border: 1px solid #ebebeb !important;
+        box-shadow: none !important;
+    }
+
+    button{
+        background: none;
+    }
+    .avatar{
+        width:100px !important;
+        height: 100px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .top-right-corner{
+        position: absolute;
+        top: 0;
+        right: 5px;
+    }
+}

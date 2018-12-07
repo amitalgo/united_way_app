@@ -1,0 +1,48 @@
+<ion-header class="no-border-header">
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12><h2 class="text-center">Fill the form to register & create funraising page!</h2></ion-col>
+    </ion-row>
+  </ion-grid>
+  <form [formGroup]="registrationForm" (ngSubmit)="doRegister()">          
+    <ion-item>
+      <ion-input type="text" [formControl]="registrationForm.controls['fullName']" placeholder="Full Name.."></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [formControl]="registrationForm.controls['email']" placeholder="Email Address.."></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-datetime displayFormat="DD/MM/YYYY" [formControl]="registrationForm.controls['dob']" placeholder="Date of Birth.."></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea [formControl]="registrationForm.controls['address']" placeholder="Address.."></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [formControl]="registrationForm.controls['telephone']" placeholder="Telephone.."></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" [formControl]="registrationForm.controls['password']" placeholder="Password.."></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" [formControl]="registrationForm.controls['confirmPassword']" placeholder="Re-type Password.."></ion-input>
+    </ion-item>        
+
+    <button type="submit" ion-button full>Create Account</button>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12><span class="text-center">Already have an account. <a (click)='openLoginForm()'>Login here</a></span></ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

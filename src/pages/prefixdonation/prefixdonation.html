@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="header">
+    <ion-title>
+      Prefixed Donation Amount
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row *ngIf="prefixedDonationList">
+    <ion-card *ngFor="let prefixedDonation of prefixedDonationList">
+        <ion-card-header class="border-bottom">
+          {{prefixedDonation.title}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>Amount: {{prefixedDonation.amount}}</ion-item>
+            <ion-item>Description: {{prefixedDonation.item}}</ion-item>
+          </ion-list>
+        </ion-card-content>
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small color="danger" icon-start (click)="delete(prefixedDonation.sr_no)">
+              <ion-icon name='trash'></ion-icon>
+              Delete
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+  </ion-row>
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="openPrefixedDonationForm()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,28 @@
+page-login {
+    a{
+        color: color($colors,'secondary');
+    }
+    ion-item {
+        padding-left: 0px !important;
+        border-radius: 10px !important;
+        font-size: 0.9em;
+        margin-bottom: 10px !important;
+        border-bottom: 0px !important;
+        border: 1px solid #ebebeb !important;
+        box-shadow: none !important;
+    }
+    .logo{        
+        margin-top: 20vh !important;
+        text-align: center;
+
+        ion-img{
+            background: none;
+            width: 180px;
+            height: 120px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    
+}

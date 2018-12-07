@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar color="header">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Offline Donation</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <form [formGroup]="offlineDonationForm" (ngSubmit)="doSave()">  
+      
+        <ion-item>
+          <ion-select [formControl]="offlineDonationForm.controls['donationFor']" placeholder="Donation For">
+            <ion-option value="tmm">Tata Mumbai Marathon</ion-option>
+          </ion-select>
+        </ion-item>
+  
+        <ion-item>
+          <ion-select [formControl]="offlineDonationForm.controls['ngoId']" placeholder="Select NGO">
+              <div *ngFor="let ngo of ngoLists">
+                  <ion-option value="{{ngo.ngo_id}}">{{ngo.title}}</ion-option>
+              </div>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="text" [formControl]="offlineDonationForm.controls['amount']" placeholder="Amount.."></ion-input>
+        </ion-item>  
+
+        <ion-item>
+          <ion-label>Anonymous</ion-label>
+          <ion-checkbox color="dark" [formControl]="offlineDonationForm.controls['anonymous']"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="text" [formControl]="offlineDonationForm.controls['firstName']" placeholder="First Name.."></ion-input>
+        </ion-item>  
+
+        <ion-item>
+          <ion-input type="text" [formControl]="offlineDonationForm.controls['lastName']" placeholder="Last Name.."></ion-input>
+        </ion-item>  
+
+        <ion-item>
+          <ion-input type="text" [formControl]="offlineDonationForm.controls['email']" placeholder="Email.."></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-textarea [formControl]="offlineDonationForm.controls['address']" placeholder="Address.."></ion-textarea>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input type="text" [formControl]="offlineDonationForm.controls['city']" placeholder="City.."></ion-input>
+        </ion-item>   
+
+        <ion-item>
+          <ion-input type="text" [formControl]="offlineDonationForm.controls['state']" placeholder="State.."></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-input type="text" [formControl]="offlineDonationForm.controls['country']" placeholder="Country.."></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-input type="text" [formControl]="offlineDonationForm.controls['pincode']" placeholder="Pincode.."></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-input type="text" [formControl]="offlineDonationForm.controls['panNumber']" placeholder="PAN No.."></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-input type="text" [formControl]="offlineDonationForm.controls['chequeNumber']" placeholder="Cheque No.."></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-input type="text" [formControl]="offlineDonationForm.controls['bankName']" placeholder="Bank Name.."></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-datetime displayFormat="DD/MM/YYYY" [formControl]="offlineDonationForm.controls['chequeDate']" placeholder="Cheque Date.."></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="text" [formControl]="offlineDonationForm.controls['branchName']" placeholder="Bank Branch Name.."></ion-input>
+        </ion-item> 
+  
+        <button type="submit" ion-button full>Enter Donation</button>
+      </form>
+</ion-content>

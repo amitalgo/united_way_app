@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="header">
+    <ion-title>Team Member Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="teamMemberId!=''">
+    <ion-item class="no-border">
+        <ion-avatar >
+          <ion-row *ngIf="teamMemberImage; else defaultImage">
+              <img class="avatar" src="{{teamMemberImage}}">
+          </ion-row>
+          <ng-template #defaultImage><img class="avatar" src="assets/imgs/profile-pic.png"></ng-template>
+        </ion-avatar>
+        <button (click)="presentActionSheet()" class="top-right-corner"><ion-icon name="camera"></ion-icon></button>
+    </ion-item>
+  </div>
+  <form [formGroup]="teamForm" (ngSubmit)="doSave()">          
+    <ion-item>
+      <ion-input type="text" [formControl]="teamForm.controls['name']" placeholder="Name.."></ion-input>
+    </ion-item>
+    <button type="submit" ion-button full>Save Changes</button>
+    <div *ngIf="teamMemberId!=''">
+        <button type="button" ion-button full (click)="delete(teamMemberId)" color="secondary">Delete</button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar color="header">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>My Appeal/Target</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+    <form [formGroup]="appealForm" (ngSubmit)="doSave()">  
+      <ion-input type="hidden" [formControl]="appealForm.controls['id']"></ion-input>
+      <ion-item>
+        <ion-textarea [formControl]="appealForm.controls['intro']" placeholder="Your Introduction.."></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea [formControl]="appealForm.controls['appeal']" placeholder="Enter Your Appeal.."></ion-textarea>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input type="text" [formControl]="appealForm.controls['target']" placeholder="Choose Your Fundraisng Target.."></ion-input>
+      </ion-item>     
+      <!-- <span ion-text (click)="openFundraiserSegment()" color="secondary">View Fundraiser Segment Chart</span> -->
+      
+      <ion-item class="no-border-item">
+          <button type="button" ion-button color="light" round (click)="openPrefixedDonation()">Set up your prefixed donation amount</button>
+      </ion-item>
+
+      <ion-item>
+        <ion-select [formControl]="appealForm.controls['corporateId']" placeholder="Company Name">
+          <div *ngFor="let corporate of corporates">
+            <ion-option value="{{corporate.corp_id}}">{{corporate.corp_name}}</ion-option>
+          </div>
+        </ion-select>
+      </ion-item>
+      <button type="submit" ion-button full>Save Changes</button>
+    </form>
+</ion-content>

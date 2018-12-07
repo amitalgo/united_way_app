@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="header">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Updates</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngFor="let update of updates">      
+    <ion-card>
+      <ion-card-content>
+        <p [innerHTML]="update.updates"></p>
+      </ion-card-content>
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small color="secondary" icon-start (click)="delete(update.updates)">
+            <ion-icon name='trash'></ion-icon>
+            Delete
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="openUpdateForm()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

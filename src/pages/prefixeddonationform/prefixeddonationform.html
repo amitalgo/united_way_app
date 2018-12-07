@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="header">
+    <ion-title>
+      Add Prefixed Donation Amount
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+    <form [formGroup]="prefixedDonationForm" (ngSubmit)="doSave()">  
+      <ion-input type="hidden" [formControl]="prefixedDonationForm.controls['campaignId']" value="1"></ion-input>
+      <ion-input type="hidden" [formControl]="prefixedDonationForm.controls['projectId']" value="142"></ion-input>
+      <ion-item>
+        <ion-select [formControl]="prefixedDonationForm.controls['ngoId']" placeholder="Select NGO">
+            <div *ngFor="let ngo of ngoLists">
+                <ion-option value="{{ngo.ngo_id}}">{{ngo.title}}</ion-option>
+            </div>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea [formControl]="prefixedDonationForm.controls['donationFor']" placeholder="Doation For.."></ion-textarea>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input type="text" [formControl]="prefixedDonationForm.controls['amount']" placeholder="Amount.."></ion-input>
+      </ion-item>   
+
+      <button type="submit" ion-button full>Save Changes</button>
+    </form>
+</ion-content>

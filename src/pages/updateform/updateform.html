@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Update</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="updateForm" (ngSubmit)="doSave()">    
+    <ion-item>
+      <ion-input type="text" [formControl]="updateForm.controls['update']"></ion-input>
+    </ion-item>
+
+  <button type="submit" ion-button full>Save</button>
+</form>
+</ion-content>

@@ -1,0 +1,15 @@
+page-appeal {
+    ion-item {
+        padding-left: 0px !important;
+        border-radius: 10px !important;
+        font-size: 0.9em;
+        margin-bottom: 10px !important;
+        border-bottom: 0px !important;
+        border: 1px solid #ebebeb !important;
+        box-shadow: none !important;
+    }
+    .no-border-item{
+        border: 0px !important;  
+        border-bottom: 0px !important; 
+    }
+}

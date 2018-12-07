@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-navbar color='header'>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Dashboard</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid padding>
+    <ion-col col-12>
+      <ion-avatar>
+        <img *ngIf="userImage!='';else defaultImage" class="avatar img-circle" src="{{userImage}}">
+        <ng-template #defaultImage><img *ngIf="avatar!='';else defaultImage" class="avatar img-circle" src="assets/imgs/profile-pic.png"></ng-template>
+      </ion-avatar>
+      <ion-row><h5 class="text-center">{{userName}}</h5></ion-row>
+    </ion-col>
+  </ion-grid>
+  <ion-card padding class="card-no-background" >
+    <ion-card-header>
+        <!-- My Fundraising Target -->
+        <span>Rs {{achievement.achieved}} of {{achievement.target}}</span>
+    </ion-card-header>
+    <ion-card-content class="progress-bar" color='primary'>
+        <span [style.width]="workoutProgress"></span>
+    </ion-card-content>
+  </ion-card>
+  <ion-grid padding><ion-col col-12><h5>Fundraiser Leader Board</h5></ion-col></ion-grid>
+  <ion-slides *ngIf="keys && keys.length" autoplay="2000" loop="true" speed="500">
+    <ion-slide *ngFor="let key of keys">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <img *ngIf="leaderBoardResp[key]['image_file'];else defaultImage;" src="{{leaderBoardResp[key]['image_file']}}">
+            <ng-template #defaultImage><img src="assets/imgs/profile-pic.png"> </ng-template>
+          </ion-col>
+          <ion-col col-6 style="padding:20px;">
+            <h5 ion-text color="secondary">{{leaderBoardResp[key]['name']}}</h5>
+            <p>Rs. {{leaderBoardResp[key]['grand_total']}} of {{leaderBoardResp[key]['fundmeter_target']}}</p>
+          </ion-col>
+          <button ion-button class="btn-label">{{leaderBoardResp[key]['position']}}</button>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+  <div padding>
+      <ion-card *ngIf="latestUpdates">
+          <ion-card-header class="border-bottom wd-background">
+            Latest Updates
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-row *ngFor="let latestUpdate of latestUpdates">
+                <ion-item>{{latestUpdate.updates}}</ion-item>
+              </ion-row>
+            </ion-list>  
+          </ion-card-content>
+        </ion-card>
+        <ion-card *ngIf="recentDonations">
+          <ion-card-header class="border-bottom wd-background">
+            Recent Donations
+          </ion-card-header>
+          <ion-card-content>
+              <ion-list>
+                <ion-row *ngFor="let recentDonation of recentDonations">
+                  <ion-item>{{recentDonation.name}} has donated {{recentDonation.amount}}</ion-item>
+                </ion-row>
+              </ion-list>     
+          </ion-card-content>
+        </ion-card>
+  </div>
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="share()"><ion-icon name="share"></ion-icon></button>
+  </ion-fab>
+</ion-content>

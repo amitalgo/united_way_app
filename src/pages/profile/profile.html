@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-navbar color="header">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>My Account</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+    <ion-item class="no-border">
+        <ion-avatar >
+          <div *ngIf="avatar!='';else defaultImage">
+              <img class="avatar" src="{{avatar}}">
+          </div>
+          <ng-template #defaultImage><img class="avatar" src="assets/imgs/profile-pic.png"></ng-template>
+        </ion-avatar>
+        <button (click)="presentActionSheet()" class="top-right-corner"><ion-icon name="camera"></ion-icon></button>
+    </ion-item>
+    <form [formGroup]="profileForm" (ngSubmit)="doSave()">          
+        <ion-item>
+          <ion-input type="text" [formControl]="profileForm.controls['fullName']" placeholder="Full Name.."></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input type="text" [formControl]="profileForm.controls['email']" placeholder="Email Address.."></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-textarea [formControl]="profileForm.controls['aboutMe']" placeholder="About Me.."></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-textarea [formControl]="profileForm.controls['address']" placeholder="Address.."></ion-textarea>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input type="text" [formControl]="profileForm.controls['city']" placeholder="City.."></ion-input>
+        </ion-item>   
+
+        <ion-item>
+          <ion-input type="text" [formControl]="profileForm.controls['state']" placeholder="State.."></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-input type="text" [formControl]="profileForm.controls['country']" placeholder="Country.."></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-input type="text" [formControl]="profileForm.controls['pinCode']" placeholder="Pincode.."></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-input type="text" [formControl]="profileForm.controls['telephone']" placeholder="Telephone.."></ion-input>
+        </ion-item> 
+        
+        <ion-item>
+          <ion-select [formControl]="profileForm.controls['nationality']" placeholder="Nationality">
+            <ion-option value="c1">Indian</ion-option>
+          </ion-select>
+        </ion-item>
+        
+        <ion-item>
+          <ion-datetime displayFormat="DD/MM/YYYY" [formControl]="profileForm.controls['dob']" placeholder="Date of Birth.."></ion-datetime>
+        </ion-item>
+    
+        <button type="submit" ion-button full [disabled]="!profileForm.valid">Save Changes</button>
+      </form>
+</ion-content>

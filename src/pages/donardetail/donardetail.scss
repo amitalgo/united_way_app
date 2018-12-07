@@ -1,0 +1,11 @@
+page-donardetail {
+    ion-card{
+        ion-card-header{
+            padding: 10px !important;
+        }
+        .wd-background{
+            background: color($colors, secondary);
+            color: color($colors, light);
+        }
+    }
+}
